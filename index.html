@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <title>LongPhamPlus_Web</title>
+</head>
+<body>
+    <ul class="input">
+        <li>
+            <input type="search"  id="content1" placeholder="Nhập từ vào đây">
+            <button type = "button" onclick="nhap_tu(), document.getElementById('content1').value = '', document.getElementById('content2').value = ''">Nhập</button>
+            <script>
+                alert("Đọc kĩ chú thích trước khi chửi dev")
+                var a = [1];
+                var b = [2];
+                function nhap_tu() {
+                    let n = document.getElementById("content1");
+                    let con = n.value;            
+                    con = con.trim();
+                    if ("" != con ) {
+                        a.push(con);
+                    }
+                    let n2 = document.getElementById("content2");
+                    let con2 = n2.value;
+                    con2 = con2.trim();
+                    if("" != con2) {
+                        b.push(con2);
+                    }
+                }
+            </script>
+        </li>
+        <li>
+            <input type="search"  id="content2" placeholder="Nhập nghĩa vào đây">
+            <h3 style="color : red;">Nhập nghĩa không in hoa nhé VD: ベトナム thì nghĩa là "nước việt nam"</h3>
+        </li>
+    </ul>
+    
+    <button type = "button" onclick="xoa()">Xóa</button>
+    <script>
+        function xoa() {
+            a.pop();
+            b.pop();
+        }
+    </script>
+    <button onclick="check()">Xem nội dung và nghĩa</button>
+    <button onclick="run(), document.getElementById('answer').value = ''" >Rand</button>
+    <div style="border: solid; ">
+        <h3 class= "rand_value" id="value" style="font-weight: 500"></h3>
+        <style> 
+            rand_value {
+                margin: 0;
+            }
+            .input > li {
+                list-style: none;
+            }
+        </style>
+    </div>
+    <script>
+        function check() {
+            alert(a + "\n" + b);
+        }
+        var anstocheck;
+        function run() {
+            var rand = a[Math.floor(Math.random() * a.length)];
+            document.getElementById("value").innerHTML = rand;
+            anstocheck = a.indexOf(rand);
+        }
+    </script>
+    <input id="answer" placeholder="Nhập đáp án vào đây">
+    <button onclick="check_ans()">Kiểm tra</button>
+    <script>
+        function check_ans() {
+            let n = document.getElementById("answer");
+            let con = n.value;
+            con = con.trim();
+            if (anstocheck != -1 && con != "") {
+                if (con == b[anstocheck]) {
+                    alert("Đúng");
+                } else {
+                    alert("Sai phải là: " + b[anstocheck]);
+                }
+            } else if (con != ""){
+                alert("Sai phải là: " + b[anstocheck]);
+            }
+        }
+    </script>
+    <ul>
+        <h2 style="color: red; ">Chú thích</h2>
+        <li><h3 style="color : red;">Xóa chỉ xóa được từ được nhập gần nhất nên lưu ý trước khi nhập tiếp,nhỡ sai mà sửa thì sml :v</h3></li>
+        <li><h3 style="color : red;">Xem nội dung và nghĩa là xem những từ mình đã nhập cùng nghĩa</h3></li>
+        <li><h3 style="color : red;">Xem nội dung và nghĩa thì tự dóng hàng để check nhé sau t học cao hơn thì t fix :v </h3></li>
+        <li><h3 style="color : red;">Nhập thì cần nhập từ và nghĩa cùng lúc rồi ấn nút nhập</h3></li>
+        <li><h3 style="color : red;">rand là chạy ngẫu nhiên từ</h3></li>
+    </ul>
+</body>
+
+</html>
