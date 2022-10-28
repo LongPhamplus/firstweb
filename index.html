@@ -15,15 +15,15 @@
                 function nhap_tu() {
                     let n = document.getElementById("content1");
                     let con = n.value;            
-                    con = con.trim();
-                    if ("" != con ) {
-                        a.push(con);
-                    }
                     let n2 = document.getElementById("content2");
                     let con2 = n2.value;
                     con2 = con2.trim();
-                    if("" != con2) {
+                    con = con.trim();
+                    if ("" != con && "" != con2) {
+                        a.push(con);
                         b.push(con2);
+                    } else {
+                        alert("Nhập thiếu rồi !!!");
                     }
                 }
             </script>
