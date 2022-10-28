@@ -42,7 +42,8 @@
         }
     </script>
     <button onclick="check()">Xem nội dung và nghĩa</button>
-    <button onclick="run(), document.getElementById('answer').value = ''" >Rand</button>
+    <button onclick="run1(), document.getElementById('answer').value = ''" >Rand-Nhật</button>
+    <button onclick="run2(), document.getElementById('answer').value = ''" >Rand-Việt</button>
     <div style="border: solid; ">
         <h3 class= "rand_value" id="value" style="font-weight: 500"></h3>
         <style> 
@@ -61,11 +62,20 @@
         function check() {
             alert(a + "\n" + b);
         }
+        var swap;
         var anstocheck;
-        function run() {
+        function run1() {
             var rand = a[Math.floor(Math.random() * a.length)];
             document.getElementById("value").innerHTML = rand;
             anstocheck = a.indexOf(rand);
+            swap = 1;
+        }
+        var anstocheck1;
+        function run2() {
+            var rand = b[Math.floor(Math.random() * b.length)];
+            document.getElementById("value").innerHTML = rand;
+            anstocheck1 = b.indexOf(rand);
+            swap = 2;
         }
     </script>
     <input id="answer" placeholder="Nhập đáp án vào đây">
@@ -75,14 +85,23 @@
             let n = document.getElementById("answer");
             let con = n.value;
             con = con.trim();
-            if (anstocheck != -1 && con != "") {
+            if (anstocheck != -1 && con != "" && swap == 1) {
                 if (con == b[anstocheck]) {
                     alert("Đúng");
                 } else {
                     alert("Sai phải là: " + b[anstocheck]);
                 }
-            } else if (con != ""){
+            } else if (con != "" && swap == 1){
                 alert("Sai phải là: " + b[anstocheck]);
+            }
+            if (anstocheck1 != -1 && con != "" && swap == 2) {
+                if (con == a[anstocheck1]) {
+                    alert("Đúng");
+                } else {
+                    alert("Sai phải là: " + a[anstocheck1]);
+                }
+            } else if (con != "" && swap == 2){
+                alert("Sai phải là: " + a[anstocheck1]);
             }
         }
     </script>
